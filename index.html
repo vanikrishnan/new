@@ -38,6 +38,7 @@
         <div id="py"  class="btns " style="display:none;" >
             <div class="btn-group">
             <div class="btn btn-primary button1" aria-disabled="true" id="wob_rain1" role="button" tabindex="0" style="display:inline-block">Temperature</div>      
+
             <div>
                 <button id="wind1"  class="btn btn-primary" style="display:none;">WIND</button>
             </div>
@@ -51,7 +52,24 @@
                     <h2 id="cityname"></h2>
                     <h3 id="currentdate"></h3>
                     <h4 id="tempdesc"></h4>
-                    <span><img id="image"/><h3 id="tempvalue"></h3></span><sup><button id="celsius" class="btn btn-dark">&#8451;</button>&nbsp;<button id="farenheit" class="btn btn-dark">&#8457;</button></sup>
+                    <!-- <span style="display: inline;"><img id="image"/><h3 sytle="display:inline" id="tempvalue"></h3>
+                     </span> -->
+                    <div style="display: inline;">
+                    <div >
+                        <img id="image"/>
+                    </div>
+                        <div>
+                       <h3 id="tempvalue" > 
+                        </div>
+                        <div>
+                           <button id="celsius" class="btn btn-dark">&#8451;</button> 
+                        </div>
+        <div>
+            <sup>
+    <button id="farenheit" class="btn btn-dark">&#8457;</button>
+</sup>
+</div>
+</div>
                 </div>
                 <div class="temp-contents">
                     <ul>
@@ -112,9 +130,33 @@
         <button id="wednesday" class="btn btn-primary" >Wednesday</button>
         <button id="thursday" class="btn btn-primary" >Thursday</button>
         <button id="friday" class="btn btn-primary" >Friday</button>
-            
-            
+                        
         </div>
+         <!-- <*******************************************************>  -->
+        <div class="day-container">
+            <div class="one">
+                    <div class="inner" id="1"></div>
+                    <div class="inner" id="2"></div>
+                    <div class="inner" id="3"></div>
+                    <div class="inner" id="4"></div>
+                    <div class="inner" id="5"></div>
+            </div>
+            <div class="one">
+                    <img class="inner" id="6"/>
+                    <img class="inner" id="7"/>
+                    <img class="inner" id="8"/>
+                    <img class="inner" id="9"/>
+                    <img class="inner" id="10"/>
+            </div>
+            <div class="one">
+                    <div class="inner" id="11"></div>
+                    <div class="inner" id="12"></div>
+                    <div class="inner" id="13"></div>
+                    <div class="inner" id="14"></div>
+                    <div class="inner" id="15"></div>
+            </div>
+            
+        </div>    
         
     </div>
     <img/>

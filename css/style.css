@@ -37,3 +37,29 @@ span{
     margin-top:20px;
     
 }
+.one
+{
+    display:flex;
+    justify-content: space-evenly;
+}
+.inner
+{    
+    display:flex;
+    justify-content: space-evenly;
+}
+#celsius{
+     margin-left: 6.5%;
+  
+     margin-top: -77px;
+     background:transparent;
+}
+#farenheit{
+    margin-left: 8%;
+ 
+    margin-top: -107px;
+    background:transparent;
+}
+#tempvalue{
+     margin-left: 5%; 
+     margin-top: -43px;
+}

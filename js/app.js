@@ -35,12 +35,12 @@ $("#getWeatherBtn").click(()=>{
       type:"GET",
       url:`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=c6692183353a35f1d73dbe6f90af94ba`,
       success : (output)=>{
-        $("#tempvalue").html(Math.ceil(output.main.temp-273));
+        $("#tempvalue").html (Math.ceil(output.main.temp-273));
 
         console.log(output);
-        $("#wind").append(output.wind.speed+"kmph");
-        $("#pressure").append(output.main.pressure+"mb");
-        $("#humidity").append(output.main.humidity+"%");
+        $("#wind").html("wind speed:"+output.wind.speed+"kmph");
+        $("#pressure").html("pressure"+output.main.pressure+"mb");
+        $("#humidity").html("humidity"+output.main.humidity+"%");
         $("#currentdate").html(moment(output.dt * 1000).format('dddd, h:mm a'));
         $("#tempdesc").html(output.weather[0].description);
         var iconId = output.weather[0].icon;
@@ -48,18 +48,27 @@ $("#getWeatherBtn").click(()=>{
         $('img').attr('src', icon);
         $("#celsius").click(()=>{  
           console.log("hy clicked");
-          $("#tempvalue").html(Math.ceil(output.main.temp-273));
+var a=$("#tempvalue").html(Math.ceil(output.main.temp-273));
         })
         $("#farenheit").click(()=>{
           const celsius=(Math.ceil((output.main.temp-273)*9/5)+32);
           console.log("hy hello");
           $("#tempvalue").html(celsius);
           // $("#tempvalue").html(celcius * 9/5 + 32);
-          
+          // <**********************************************************>
+        
+          // <**********************************************************>
         })
+          
+        $("#1").html(moment(output.dt * 1000).format('dddd'));
+        $("#6").attr('src',icon);
+        $("#11").html(Math.ceil(output.main.temp-273));
         // $("#tempvalue").html(Math.ceil(output.main.temp-273));
       },
-      error: (data)=>{
+      
+     
+      
+      error: (output)=>{
         console.log(error);
       }
 
@@ -220,27 +229,51 @@ $('#wob_rain1').click(function(){
         $.ajax({
             type: 'GET',
             url: `http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=c6692183353a35f1d73dbe6f90af94ba`,
-            success: (data) => {
-              tempData = data;
+            success: (output) => {
+              tempData = output;
               
               var iconId = tempData.list[0].weather[0].icon;
               var icon =  "http://openweathermap.org/img/w/" + iconId + ".png";
               $('#r1').attr('src', icon);
                 console.log('In success callback');
-                console.log(data);
+                console.log(output);
                 
-                listOfDates = data.list.map((ele) => moment(ele.dt * 1000).format('dddd, h:mm a'));
+                listOfDates = output.list.map((ele) => moment(ele.dt * 1000).format('dddd, h:mm a'));
                 console.log(listOfDates);
                 var len=listOfDates.length;
                 console.log(len+"is the length");  
 
                 firstList=listOfDates.slice(a, b);
                 // firstlist=listOfDates[0];
-                listOfTemp = data.list.map(ele => Math.round(ele.main.temp - 270));
+                listOfTemp = output.list.map(ele => Math.round(ele.main.temp - 270));
                 console.log(listOfTemp.length);
                 secondList=listOfTemp.slice(a, b);
                 plotChart(secondList  , firstList);
+ // <********************************************>
+                $("#2").html(moment(output.list[5].dt * 1000).format('dddd'));
+                $("#7").attr('src',icon1);
+                $("#12").html(Math.ceil((output.list[5].main.temp-273)));
+                var iconId1 = output.list[12].weather[0].icon;
+                var icon1 =  "http://openweathermap.org/img/w/" + iconId1 + ".png";
+                $("#3").html(moment(output.list[12].dt * 1000).format('dddd'));
+                $("#8").attr('src',icon1);
+                $("#13").html(Math.ceil((output.list[12].main.temp-273)));
+                var iconId1 = output.list[20].weather[0].icon;
+                var icon1 =  "http://openweathermap.org/img/w/" + iconId1 + ".png";
+                $("#4").html(moment(output.list[20].dt * 1000).format('dddd'));
+                $("#9").attr('src',icon1);
+                $("#14").html(Math.ceil((output.list[20].main.temp-273)));
+
+                var iconId1 = output.list[28].weather[0].icon;
+                var icon1 =  "http://openweathermap.org/img/w/" + iconId1 + ".png";
+                $("#5").html(moment(output.list[28].dt * 1000).format('dddd'));
+                $("#10").attr('src',icon1);
+                $("#15").html(Math.ceil((output.list[28].main.temp-273)));
+                 // <***************************************>
             },
+           
+              
+            
             error: (err) => {
                 console.log('In error callback');
                 console.log(err);

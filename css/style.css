@@ -1,0 +1,39 @@
+button {
+    margin-top: 20px;
+    
+}
+.results-hide {
+    display: none;
+}
+
+.results-show {
+    display: block;
+}
+
+#row{
+    display: flex;
+    justify-content: space-evenly;
+}
+ul{
+    list-style-type: none;
+}
+.temp-contents{
+    float:right;
+    margin-right: 400px;
+}
+#weeks{
+    margin:120px;
+}
+span{
+    display: inline;
+}
+       
+#getWeatherBtn
+{    margin-top:20px;
+    margin-left: 35%;
+}
+#getForecastBtn
+{
+    margin-top:20px;
+    
+}

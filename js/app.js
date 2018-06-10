@@ -21,7 +21,7 @@ $(function(){
 $("#getWeatherBtn").click(()=>{
   
   $(function(){
-  
+    $("#chart-container").hide();
     $(".temp-contents").show();
     $("#celsius").show();
   $("#farenheit").show();
@@ -38,9 +38,9 @@ $("#getWeatherBtn").click(()=>{
         $("#tempvalue").html (Math.ceil(output.main.temp-273));
 
         console.log(output);
-        $("#wind").html("wind speed:"+output.wind.speed+"kmph");
-        $("#pressure").html("pressure"+output.main.pressure+"mb");
-        $("#humidity").html("humidity"+output.main.humidity+"%");
+        $("#wind").html("Wind Speed:"+output.wind.speed+"kmph");
+        $("#pressure").html("Pressure:"+output.main.pressure+"mb");
+        $("#humidity").html("Humidity:"+output.main.humidity+"%");
         $("#currentdate").html(moment(output.dt * 1000).format('dddd, h:mm a'));
         $("#tempdesc").html(output.weather[0].description);
         var iconId = output.weather[0].icon;
@@ -92,27 +92,27 @@ $('button').click(function(){
   var a=0;
     var b=7;
     
-   if(this.id=="friday")
+   if(this.id=="monday")
   {
     c=a;
     d=b;
   }
-   else if(this.id=="saturday")
+   else if(this.id=="tuesday")
   {
     c=a+8;
     d=b+8;
   }
-  else if(this.id=="sunday")
+  else if(this.id=="wednesday")
   {
     c=a+16;
     d=b+16;
   }
-   else if(this.id=="monday")
+   else if(this.id=="thursday")
   {
     c=a+24;
     d=b+24;
   }
-   else if(this.id=="tuesday")
+   else if(this.id=="friday")
   {
     c=a+32;
     d=b+32;
@@ -221,6 +221,9 @@ $('#wob_rain1').click(function(){
   // weekday[6] = "saturday";
  
   // var n = weekday[d.getDay()];
+  $("#chart-container").show();
+  $("#week").hide();
+  $("#weeks").show();
   var a=0;
     var b=7;
     console.log('Button Clicked');
@@ -333,7 +336,153 @@ Highcharts.chart('chart-container', {
 })
 
 
-
+// $('button').click(function(){
+//   var a=0;
+//     var b=7;
+    
+//    if(this.id=="a")
+//   {
+//     c=a;
+//     d=b;
+//   }
+//    else if(this.id=="b")
+//   {
+//     c=a+8;
+//     d=b+8;
+//   }
+//   else if(this.id=="c")
+//   {
+//     c=a+16;
+//     d=b+16;
+//   }
+//    else if(this.id=="d")
+//   {
+//     c=a+24;
+//     d=b+24;
+//   }
+//    else if(this.id=="e")
+//   {
+//     c=a+32;
+//     d=b+32;
+//   }
+//  console.log('Button Clicked');
+//  var city = $('#cityInput').val();
+//  //$("#cityname").html(city);
+//  $.ajax({
+ 
+//     type:"GET",
+//     url: `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=c6692183353a35f1d73dbe6f90af94ba`,
+//     success : (output)=>{
+//       console.log("1");
+//         console.log(output);
+//         currentDate = output.list.map((ele) => moment(ele.dt * 1000).format('h a'));
+//         console.log(currentDate);
+//         console.log(output.list[0].wind.speed);
+//         var winds = new Array(38);
+//         for(var y=0;y<36;y++){
+//             winds[y]=output.list[y].wind.speed;
+           
+//         }
+//         console.log("2");
+//         var degrees = new Array(38);
+//         for(var y=0;y<36;y++){
+//             degrees[y]=output.list[y].wind.deg;
+           
+//         }
+ 
+//         currentdeg = degrees.slice(c,d);
+//         /*for(var i=0;i<37;i++){
+//            console.log( winds[i]);
+//         }*/
+//         current = winds.slice(c,d);
+//         plotChart(current,currentdeg, currentDate);
+//     },
+//     error : (output)=>{
+//         console.log(output);
+//     }
+//  });
+ 
+//  const plotChart = (windArr,degArr, datesArr) => {
+//   console.log("inside plot");
+//     Highcharts.chart('chart-container', {
+//         chart: {
+//             type: 'windbarb'
+//         },
+//         title: {
+//             text: 'wind'
+//         },
+//         xAxis: {
+//             categories: datesArr
+//         },
+//         yAxis: {
+//             title: {
+//                 text: 'WindSpeed'
+//             },
+//             labels: {
+//                 formatter: function () { return this.value + '°'; }
+//             }
+//         },
+//         tooltip: {
+//             crosshairs: true,
+//             shared: true
+//         },
+//         plotOptions: {
+//             area: {
+//                 dataLabels: {
+//                   enabled: true
+ 
+//                 },
+//                 series: {
+//                     allowPointSelect: true
+//                 },
+          
+//             }
+//         },
+//         series: [{
+//             name: city,
+//             /*color: Highcharts.getOptions().colors[6],
+//             marker: {
+//                 symbol: 'square'
+//             },*/
+//             data: windArr,
+ 
+//             name: 'Wind',
+//             color: Highcharts.getOptions().colors[1],
+//             showInLegend: false,
+//             tooltip: {
+//                 valueSuffix: ' m/s'
+//             }
+//         }, {
+//             type: 'area',
+//             keys: ['y', 'rotation'], // rotation is not used here
+//             data: windArr,
+//             color: Highcharts.getOptions().colors[0],
+//             fillColor: {
+//                 linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+//                 stops: [
+//                     [0, Highcharts.getOptions().colors[0]],
+//                     [
+//                         1,
+//                         Highcharts.color(Highcharts.getOptions().colors[0])
+//                             .setOpacity(0.25).get()
+//                     ]
+//                 ]
+//             },
+//             name: 'Wind speed',
+//             tooltip: {
+//                 valueSuffix: ' m/s'
+//             }
+    
+ 
+ 
+ 
+ 
+ 
+ 
+//         }]
+//     });
+//  }
+//  })
 
 
 
@@ -349,6 +498,8 @@ Highcharts.chart('chart-container', {
 
 
 $("#wind1").click(()=>{
+//   $("#weeks").hide();
+//   $("#week").show();
   console.log("inside wind function");
 var city = $('#cityInput').val();
 //$("#cityname").html(city);
@@ -474,12 +625,26 @@ const plotChart = (windArr,degArr, datesArr) => {
 })
 
 function btton1(){
-  var y=  document.getElementById("wind1");
+  var y=  document.getElementById("rt");
  
   y.style.display = "block";
 }
 function btton2(){
-  var y=  document.getElementById("py");
- 
-  y.style.display = "block";
+  var z=  document.getElementById("weeks");
+  
+  z.style.display = "block";
+  
 }
+function btton3(){
+  
+  var x=  document.getElementById("day");
+  
+  x.style.display = "block";
+}
+function btton4(){
+  
+  var x=  document.getElementById("week");
+  
+  x.style.display = "block";
+}
+

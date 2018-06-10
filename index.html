@@ -21,7 +21,7 @@
     
 
 </head>
-<body>
+<body style="background-color:blueviolet;">
   <div class="container">
       <h2 class="text-center">Weather App</h2>
       <div class="input-group">
@@ -34,22 +34,25 @@
             </div> -->
           
         <button id="getWeatherBtn" class="btn btn-primary">Get Current Weather</button>
-        <button id="getForecastBtn" class="btn btn-primary" onclick="btton1();btton2();">Get Forecast</button>
-        <div id="py"  class="btns " style="display:none;" >
-            <div class="btn-group">
-            <div class="btn btn-primary button1" aria-disabled="true" id="wob_rain1" role="button" tabindex="0" style="display:inline-block">Temperature</div>      
-
-            <div>
-                <button id="wind1"  class="btn btn-primary" style="display:none;">WIND</button>
+        <button id="getForecastBtn" class="btn btn-primary"  onclick="btton1();">Get Forecast</button>
+        <!-- <div id="py"  class="btns " style="display:none;" > -->
+            <div class="btn-group" id="rt" style="display:none;">
+            <!-- <div class="btn btn-primary button1" aria-disabled="true" id="wob_rain1" role="button" tabindex="0" style="display:inline-block">Temperature</div>       -->
+            
+                    <!-- <button id="wob_rain1"  class="btn btn-primary" style="display:none;">TEMPERATURE</button> -->
+                        <button id="wob_rain1"   class="btn btn-primary" onclick="btton2();btton3();">TEMPERATURE</button>
+                    
+                    
+            <!-- <button id="wob_rain1"  class="btn btn-primary" style="display:none;">TEMPERATURE</button> -->
+             <button id="wind1"   class="btn btn-primary" onclick="btton4();">WIND</button>
+            
             </div>
-            </div>
-            </div>
+            <!-- </div> -->
     </div>
             <!--creation of temperature contents-->
-            <div class="temp-container">
-                <div class="temperature-container">
-                   
-                    <h2 id="cityname"></h2>
+            <div class="temp-container" style="display: inline;" >
+                <div class="temperature-container" >
+                   <h2 id="cityname"></h2>
                     <h3 id="currentdate"></h3>
                     <h4 id="tempdesc"></h4>
                     <!-- <span style="display: inline;"><img id="image"/><h3 sytle="display:inline" id="tempvalue"></h3>
@@ -59,29 +62,32 @@
                         <img id="image"/>
                     </div>
                         <div>
-                       <h3 id="tempvalue" > 
+                       <h3 id="tempvalue" > </h3>
                         </div>
                         <div>
                            <button id="celsius" class="btn btn-dark">&#8451;</button> 
                         </div>
         <div>
             <sup>
-    <button id="farenheit" class="btn btn-dark">&#8457;</button>
+<button id="farenheit" class="btn btn-dark">&#8457;</button>
 </sup>
 </div>
 </div>
-                </div>
-                <div class="temp-contents">
-                    <ul>
-                        <li id="humidity">Humidity</li>
-                        <li id="wind" >Wind</li>
-                        <li id="pressure">Pressure</li>
-                    </ul>
-                </div>
-            
-            </div>
+</div>
+<div class="temp-contents" >
+        <ul>
+            <li id="humidity">Humidity</li>
+            <li id="wind" >Wind</li>
+            <li id="pressure">Pressure</li>
+        </ul>
+    </div>
 
 
+</div>
+                
+<div id="chart-container" >
+
+    </div>
 
         <!-- <table class="table table-striped results-hide">
             <thead>
@@ -106,9 +112,7 @@
             </tbody>
         </table> -->
 
-        <div id="chart-container" >
-
-        </div>
+        
         <!-- <div id="row"  >
             <div  >
                 <img id="r1">
@@ -121,19 +125,28 @@
                     <div id="r7" >g</div>
                     
         </div> -->
-        <div id="weeks">
+        <div id="weeks" style="display: none;">
             <!-- <button  id="friday">Friday</button> -->
-        <button id="saturday" class="btn btn-primary" >Saturday</button>
-        <button id="sunday" class="btn btn-primary" >Sunday</button>
-        <button id="monday" class="btn btn-primary" >Monday</button>
-        <button id="tuesday" class="btn btn-primary" >Tuesday</button>
-        <button id="wednesday" class="btn btn-primary" >Wednesday</button>
-        <button id="thursday" class="btn btn-primary" >Thursday</button>
-        <button id="friday" class="btn btn-primary" >Friday</button>
-                        
+        <button id="monday" class="btn btn-danger" >Monday</button>
+        <button id="tuesday" class="btn btn-danger" >Tuesday</button>
+        <button id="wednesday" class="btn btn-danger" >Wednesday</button>
+        <button id="thursday" class="btn btn-danger" >Thursday</button>
+        <button id="friday" class="btn btn-danger" >Friday</button>
         </div>
+        
+
+        <!-- <div id="week" style="display: none;">
+            
+            <button id="a" class="btn btn-primary" >Monday</button>
+            <button id="b" class="btn btn-primary" >Tuesday</button>
+            <button id="c" class="btn btn-primary" >Wednesday</button>
+            <button id="d" class="btn btn-primary" >Thursday</button>
+            <button id="e" class="btn btn-primary" >Friday</button>
+            
+                            
+            </div> -->
          <!-- <*******************************************************>  -->
-        <div class="day-container">
+        <div class="day-container" id="day" style="display: none;">
             <div class="one">
                     <div class="inner" id="1"></div>
                     <div class="inner" id="2"></div>
@@ -158,8 +171,8 @@
             
         </div>    
         
-    </div>
-    <img/>
+    
+    <!-- <img/> -->
     
 
     
